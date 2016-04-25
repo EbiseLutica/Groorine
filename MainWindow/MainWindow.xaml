@@ -1,0 +1,272 @@
+﻿<controls:MetroWindow x:Class="Groorine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Groorine"
+		xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Groorine" Height="599.6" Width="800" Background="Black"
+		UseLayoutRounding="True" ResizeMode="CanResizeWithGrip">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="ファイル(_F)">
+				<MenuItem Header="新規作成(_N)">
+					<MenuItem.Icon>
+						<Image Source="Resources/VSO_NewFile_16x.png" Stretch="None" ToolTip="新しいプロジェクトを作成します．"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Header="開く(_O)">
+					<MenuItem.Icon>
+						<Image Source="Resources/OpenFolder_16x.png" Stretch="None" ToolTip="新しいプロジェクトを作成します．"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Header="上書き保存(_S)">
+					<MenuItem.Icon>
+						<Image Source="Resources/VSO_Save_16x.png" Stretch="None" ToolTip="新しいプロジェクトを作成します．"/>
+					</MenuItem.Icon>
+				</MenuItem>
+				<MenuItem Header="名前をつけて保存(_A)"/>
+				<Separator/>
+				<MenuItem Header="(_A)"/>
+				<MenuItem Header="終了(_X)"/>
+			</MenuItem>
+			<MenuItem Header="編集(_E)">
+				<MenuItem Header="元に戻す(_U)"/>
+				<MenuItem Header="やり直す(_R)"/>
+				<MenuItem Header="切り取り(_T)"/>
+				<MenuItem Header="コピー(_C)"/>
+				<MenuItem Header="貼り付け(_P)"/>
+				<MenuItem Header="削除(_D)"/>
+			</MenuItem>
+			<MenuItem Header="表示(_V)"/>
+			<MenuItem Header="ツール(_T)"/>
+			<MenuItem Header="ウィンドウ(_W)"/>
+			<MenuItem Header="ヘルプ(_H)">
+				<MenuItem Header="バージョン情報(_A)"/>
+			</MenuItem>
+		</Menu>
+
+		<StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+			<StatusBarItem>準備完了</StatusBarItem>
+		</StatusBar>
+		<ToolBar DockPanel.Dock="Top">
+			<Button>
+				<Image Source="Resources/VSO_NewFile_16x.png" Stretch="None" ToolTip="新しいプロジェクトを作成します．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/OpenFolder_16x.png" Stretch="None" ToolTip="プロジェクトを開きます．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/VSO_Save_16x.png" Stretch="None" ToolTip="現在のプロジェクトを保存します．"/>
+			</Button>
+			<Separator/>
+			<Button>
+				<Image Source="Resources/VSO_Undo_16x.png" Stretch="None" ToolTip="操作を元に戻します．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/Redo_16x.png" Stretch="None" ToolTip="操作をやり直します．"/>
+			</Button>
+			<Separator/>
+			<Button>
+				<Image Source="Resources/GoToLast.png" Stretch="None" ToolTip="タイムラインのはじめに移動します．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/Rewind.png" Stretch="None" ToolTip="前の小節に移動します．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/previous.png" Stretch="None" ToolTip="小節内のはじめに移動します．"/>
+			</Button>
+			<Button>
+				<Image Source="Resources/arrow_run_16xLG.png" Stretch="None" ToolTip="再生を開始します．" />
+			</Button>
+			<Button>
+				<Image Source="Resources/RecordDot_16xLG.png" Stretch="None" ToolTip="レコーディングを開始します．" />
+			</Button>
+			<Button>
+				<Image Source="Resources/next.png" Stretch="None" ToolTip="次の小節に移動します．" />
+			</Button>
+			<Button>
+				<Image Source="Resources/GoToFirst.png" Stretch="None" ToolTip="タイムラインのおわりに移動します．" />
+			</Button>
+			<Separator/>
+			<Button>
+				<Image Source="Resources/GoToFirst.png" Stretch="None" ToolTip="タイムラインのおわりに移動します．" />
+			</Button>
+
+		</ToolBar>
+		<Grid DockPanel.Dock="Top" Margin="6,0,-6,0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="150"/>
+				<ColumnDefinition/>
+
+			</Grid.ColumnDefinitions>
+			<TabControl>
+				<TabItem Header="Track" controls:ControlsHelper.HeaderFontSize="18">
+					<Image Source="Resources/property.PNG" Stretch="Fill"/>
+				</TabItem>
+				<TabItem Header="Preset" controls:ControlsHelper.HeaderFontSize="18">
+					<ListView>
+						<ListViewItem>Acoustic Grand Piano</ListViewItem>
+						<ListViewItem>Bright Acoustic Piano</ListViewItem>
+						<ListViewItem>Electoric Grand Piano</ListViewItem>
+						<ListViewItem>Honky-tonk Piano</ListViewItem>
+						<ListViewItem>Electoric Piano 1</ListViewItem>
+						<ListViewItem>Electoric Piano 2</ListViewItem>
+						<ListViewItem>Harpsichord</ListViewItem>
+						<ListViewItem>Clavi</ListViewItem>
+						<ListViewItem>Celesta</ListViewItem>
+						<ListViewItem>Glockenspiel</ListViewItem>
+						<ListViewItem>Music Box</ListViewItem>
+						<ListViewItem>Vibraphone</ListViewItem>
+						<ListViewItem>Marimba</ListViewItem>
+						<ListViewItem>Xylophone</ListViewItem>
+						<ListViewItem>Tubular Bells</ListViewItem>
+						<ListViewItem>Dulcimer</ListViewItem>
+						<ListViewItem>Drawbar Organ</ListViewItem>
+						<ListViewItem>Percussive Organ</ListViewItem>
+						<ListViewItem>Rock Organ</ListViewItem>
+						<ListViewItem>Church Organ</ListViewItem>
+						<ListViewItem>Reed Organ</ListViewItem>
+						<ListViewItem>Accordion</ListViewItem>
+						<ListViewItem>Harmonica</ListViewItem>
+						<ListViewItem>Tango Accordion</ListViewItem>
+						<ListViewItem>Acoustic Giutar (Nylon)</ListViewItem>
+						<ListViewItem>Acoustic Giutar (Steel)</ListViewItem>
+						<ListViewItem>Electoric Giutar (Jazz)</ListViewItem>
+						<ListViewItem>Electoric Giutar (Clean)</ListViewItem>
+						<ListViewItem>Electoric Giutar (Muted)</ListViewItem>
+						<ListViewItem>Overdriven Guitar</ListViewItem>
+						<ListViewItem>Distortion Guitar</ListViewItem>
+						<ListViewItem>Guitar Harmonics</ListViewItem>
+						<ListViewItem>Acoustic Bass</ListViewItem>
+						<ListViewItem>Electoric Bass (Fingar)</ListViewItem>
+						<ListViewItem>Electoric Bass (Pick)</ListViewItem>
+						<ListViewItem>Fretless Bass</ListViewItem>
+						<ListViewItem>Slap Bass 1</ListViewItem>
+						<ListViewItem>Slap Bass 2</ListViewItem>
+						<ListViewItem>Synth Bass 1</ListViewItem>
+						<ListViewItem>Synth Bass 2</ListViewItem>
+						<ListViewItem>Violin</ListViewItem>
+						<ListViewItem>Viola</ListViewItem>
+						<ListViewItem>Cello</ListViewItem>
+						<ListViewItem>Contrabass</ListViewItem>
+						<ListViewItem>Tremolo Strings</ListViewItem>
+						<ListViewItem>Pizzicato Strings</ListViewItem>
+						<ListViewItem>Orchestral Harp</ListViewItem>
+						<ListViewItem>Timpani</ListViewItem>
+						<ListViewItem>String Ensemble 1</ListViewItem>
+						<ListViewItem>String Ensemble 2</ListViewItem>
+						<ListViewItem>Synth Strings 1</ListViewItem>
+						<ListViewItem>Synth Strings 2</ListViewItem>
+						<ListViewItem>Choir Aahs</ListViewItem>
+						<ListViewItem>Voice Oohs</ListViewItem>
+						<ListViewItem>Synth Voice</ListViewItem>
+						<ListViewItem>Orchestra Hit</ListViewItem>
+						<ListViewItem>Trumpet</ListViewItem>
+						<ListViewItem>Trombone</ListViewItem>
+						<ListViewItem>Tuba</ListViewItem>
+						<ListViewItem>Muted Trumpet</ListViewItem>
+						<ListViewItem>French Horn</ListViewItem>
+						<ListViewItem>Brass Section</ListViewItem>
+						<ListViewItem>Synth Brass 1</ListViewItem>
+						<ListViewItem>Synth Brass 2</ListViewItem>
+						<ListViewItem>Soprano Sax</ListViewItem>
+						<ListViewItem>Alto Sax</ListViewItem>
+						<ListViewItem>Tenor Sax</ListViewItem>
+						<ListViewItem>Baritone Sax</ListViewItem>
+						<ListViewItem>Oboe</ListViewItem>
+						<ListViewItem>English Horn</ListViewItem>
+						<ListViewItem>Bassoon</ListViewItem>
+						<ListViewItem>Clarinet</ListViewItem>
+						<ListViewItem>Piccolo</ListViewItem>
+						<ListViewItem>Flute</ListViewItem>
+						<ListViewItem>Recorder</ListViewItem>
+						<ListViewItem>Pan Flute</ListViewItem>
+						<ListViewItem>Blown Bottle</ListViewItem>
+						<ListViewItem>Shakuhach</ListViewItem>
+						<ListViewItem>Whistle</ListViewItem>
+						<ListViewItem>Ocarina</ListViewItem>
+						<ListViewItem>Lead 1 (square)</ListViewItem>
+						<ListViewItem>Lead 2 (Sawtooth)</ListViewItem>
+						<ListViewItem>Lead 3 (Calliope)</ListViewItem>
+						<ListViewItem>Lead 4 (Chiff)</ListViewItem>
+						<ListViewItem>Lead 5 (Charang)</ListViewItem>
+						<ListViewItem>Lead 6 (Voice)</ListViewItem>
+						<ListViewItem>Lead 7 (Fifths)</ListViewItem>
+						<ListViewItem>Lead 8 (Bass+Lead)</ListViewItem>
+						<ListViewItem>Pad 1 (New age)</ListViewItem>
+						<ListViewItem>Pad 2 (Warm)</ListViewItem>
+						<ListViewItem>Pad 3 (Polysynth)</ListViewItem>
+						<ListViewItem>Pad 4 (Choir)</ListViewItem>
+						<ListViewItem>Pad 5 (Bowed)</ListViewItem>
+						<ListViewItem>Pad 6 (Metallic)</ListViewItem>
+						<ListViewItem>Pad 7 (Halo)</ListViewItem>
+						<ListViewItem>Pad 8 (Sweep)</ListViewItem>
+						<ListViewItem>FX 1 (Rain)</ListViewItem>
+						<ListViewItem>FX 2 (Soundtrack)</ListViewItem>
+						<ListViewItem>FX 3 (Crystal)</ListViewItem>
+						<ListViewItem>FX 4 (Atmosphere)</ListViewItem>
+						<ListViewItem>FX 5 (Brightness)</ListViewItem>
+						<ListViewItem>FX 6 (Goblins)</ListViewItem>
+						<ListViewItem>FX 7 (Echoes)</ListViewItem>
+						<ListViewItem>FX 8 (Sci-Fi)</ListViewItem>
+						<ListViewItem>Sitar</ListViewItem>
+						<ListViewItem>Banjo</ListViewItem>
+						<ListViewItem>Shamisen</ListViewItem>
+						<ListViewItem>Koto</ListViewItem>
+						<ListViewItem>Kalimba</ListViewItem>
+						<ListViewItem>Bag Pipe</ListViewItem>
+						<ListViewItem>Fiddle</ListViewItem>
+						<ListViewItem>Shanai</ListViewItem>
+						<ListViewItem>Tinkle Bell</ListViewItem>
+						<ListViewItem>Agogo</ListViewItem>
+						<ListViewItem>Steel Drums</ListViewItem>
+						<ListViewItem>Woodblock</ListViewItem>
+						<ListViewItem>Taiko Drum</ListViewItem>
+						<ListViewItem>Melodic Tom</ListViewItem>
+						<ListViewItem>Synth Drum</ListViewItem>
+						<ListViewItem>Reverse Cymbal</ListViewItem>
+						<ListViewItem>Guitar Fret Noise</ListViewItem>
+						<ListViewItem>Breath Noise</ListViewItem>
+						<ListViewItem>Seashore</ListViewItem>
+						<ListViewItem>Bird Tweet</ListViewItem>
+						<ListViewItem>Telephone Ring</ListViewItem>
+						<ListViewItem>Helicopter</ListViewItem>
+						<ListViewItem>Applause</ListViewItem>
+						<ListViewItem>Gunshot</ListViewItem>
+					</ListView>
+				</TabItem>
+			</TabControl>
+			<GridSplitter VerticalAlignment="Stretch" Width="2"/>
+			<Grid Grid.Column="1">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Image Grid.Row="0" Source="Resources/timeline.PNG" Stretch="Fill"/>
+				<GridSplitter HorizontalAlignment="Stretch" ResizeDirection="Rows" Height="2" VerticalAlignment="Bottom"/>
+				<TabControl Grid.Row="1" TabStripPlacement="Bottom">
+					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18">
+						<Image Source="Resources/pianoroll.PNG" Stretch="Fill"/>
+					</TabItem>
+					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18">
+						<Image Source="Resources/mixer.png" Stretch="Fill"/>
+					</TabItem>
+				</TabControl>
+			</Grid>
+		</Grid>
+	</DockPanel>
+</controls:MetroWindow>
