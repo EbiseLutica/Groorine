@@ -1,7 +1,7 @@
 Groorine
 ==============
 
-[“ú–{Œê](readme-ja.md) – English
+[æ—¥æœ¬èª](readme-ja.md) ï¼Š English
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7n31q63fbt037v84?svg=true)](https://ci.appveyor.com/project/Citringo/groorine) 
 
