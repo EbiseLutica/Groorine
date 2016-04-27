@@ -141,16 +141,6 @@
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\previous.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\pianoroll.PNG" />
-    <Resource Include="Resources\timeline.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\property.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\mixer.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

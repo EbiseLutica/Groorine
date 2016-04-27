@@ -60,7 +60,7 @@
 		</Menu>
 
 		<StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-			<StatusBarItem>準備完了</StatusBarItem>
+			<StatusBarItem BorderThickness="0">準備完了</StatusBarItem>
 		</StatusBar>
 		<ToolBar DockPanel.Dock="Top">
 			<Button>
@@ -107,17 +107,16 @@
 			</Button>
 
 		</ToolBar>
-		<Grid DockPanel.Dock="Top" Margin="6,0,-6,0">
+		<Grid DockPanel.Dock="Top">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="150"/>
+				<ColumnDefinition Width="1"/>
 				<ColumnDefinition/>
-
 			</Grid.ColumnDefinitions>
-			<TabControl>
-				<TabItem Header="Track" controls:ControlsHelper.HeaderFontSize="18">
-					<Image Source="Resources/property.PNG" Stretch="Fill"/>
-				</TabItem>
-				<TabItem Header="Preset" controls:ControlsHelper.HeaderFontSize="18">
+			<controls:MetroAnimatedTabControl>
+				<controls:MetroTabItem Header="Track" controls:ControlsHelper.HeaderFontSize="18">
+				</controls:MetroTabItem>
+				<controls:MetroTabItem Header="Preset" controls:ControlsHelper.HeaderFontSize="18">
 					<ListView>
 						<ListViewItem>Acoustic Grand Piano</ListViewItem>
 						<ListViewItem>Bright Acoustic Piano</ListViewItem>
@@ -248,24 +247,21 @@
 						<ListViewItem>Applause</ListViewItem>
 						<ListViewItem>Gunshot</ListViewItem>
 					</ListView>
-				</TabItem>
-			</TabControl>
-			<GridSplitter VerticalAlignment="Stretch" Width="2"/>
-			<Grid Grid.Column="1">
+				</controls:MetroTabItem>
+			</controls:MetroAnimatedTabControl>
+			<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<Grid Grid.Column="2">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
+					<RowDefinition Height="1"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<Image Grid.Row="0" Source="Resources/timeline.PNG" Stretch="Fill"/>
-				<GridSplitter HorizontalAlignment="Stretch" ResizeDirection="Rows" Height="2" VerticalAlignment="Bottom"/>
-				<TabControl Grid.Row="1" TabStripPlacement="Bottom">
-					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18">
-						<Image Source="Resources/pianoroll.PNG" Stretch="Fill"/>
-					</TabItem>
-					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18">
-						<Image Source="Resources/mixer.png" Stretch="Fill"/>
-					</TabItem>
-				</TabControl>
+				
+				<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" ResizeDirection="Rows"/>
+				<controls:MetroAnimatedSingleRowTabControl Grid.Row="2" TabStripPlacement="Bottom">
+					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18"/>
+					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18"/>
+				</controls:MetroAnimatedSingleRowTabControl>
 			</Grid>
 		</Grid>
 	</DockPanel>
