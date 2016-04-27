@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groorine"
 		xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Views="clr-namespace:Groorine.Views"
         mc:Ignorable="d"
         Title="Groorine" Height="599.6" Width="800" Background="Black"
 		UseLayoutRounding="True" ResizeMode="CanResizeWithGrip">
 
-	<Window.Resources>
+	<controls:MetroWindow.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
@@ -19,7 +20,7 @@
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
-	</Window.Resources>
+	</controls:MetroWindow.Resources>
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="ファイル(_F)">
@@ -60,7 +61,7 @@
 		</Menu>
 
 		<StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-			<StatusBarItem BorderThickness="0">準備完了</StatusBarItem>
+			<StatusBarItem BorderThickness="0" Content="準備完了"/>
 		</StatusBar>
 		<ToolBar DockPanel.Dock="Top">
 			<Button>
@@ -109,143 +110,144 @@
 		</ToolBar>
 		<Grid DockPanel.Dock="Top">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="150"/>
+				<ColumnDefinition Width="192"/>
 				<ColumnDefinition Width="1"/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 			<controls:MetroAnimatedTabControl>
 				<controls:MetroTabItem Header="Track" controls:ControlsHelper.HeaderFontSize="18">
+					<Views:TrackPropertyView/>
 				</controls:MetroTabItem>
 				<controls:MetroTabItem Header="Preset" controls:ControlsHelper.HeaderFontSize="18">
 					<ListView>
-						<ListViewItem>Acoustic Grand Piano</ListViewItem>
-						<ListViewItem>Bright Acoustic Piano</ListViewItem>
-						<ListViewItem>Electoric Grand Piano</ListViewItem>
-						<ListViewItem>Honky-tonk Piano</ListViewItem>
-						<ListViewItem>Electoric Piano 1</ListViewItem>
-						<ListViewItem>Electoric Piano 2</ListViewItem>
-						<ListViewItem>Harpsichord</ListViewItem>
-						<ListViewItem>Clavi</ListViewItem>
-						<ListViewItem>Celesta</ListViewItem>
-						<ListViewItem>Glockenspiel</ListViewItem>
-						<ListViewItem>Music Box</ListViewItem>
-						<ListViewItem>Vibraphone</ListViewItem>
-						<ListViewItem>Marimba</ListViewItem>
-						<ListViewItem>Xylophone</ListViewItem>
-						<ListViewItem>Tubular Bells</ListViewItem>
-						<ListViewItem>Dulcimer</ListViewItem>
-						<ListViewItem>Drawbar Organ</ListViewItem>
-						<ListViewItem>Percussive Organ</ListViewItem>
-						<ListViewItem>Rock Organ</ListViewItem>
-						<ListViewItem>Church Organ</ListViewItem>
-						<ListViewItem>Reed Organ</ListViewItem>
-						<ListViewItem>Accordion</ListViewItem>
-						<ListViewItem>Harmonica</ListViewItem>
-						<ListViewItem>Tango Accordion</ListViewItem>
-						<ListViewItem>Acoustic Giutar (Nylon)</ListViewItem>
-						<ListViewItem>Acoustic Giutar (Steel)</ListViewItem>
-						<ListViewItem>Electoric Giutar (Jazz)</ListViewItem>
-						<ListViewItem>Electoric Giutar (Clean)</ListViewItem>
-						<ListViewItem>Electoric Giutar (Muted)</ListViewItem>
-						<ListViewItem>Overdriven Guitar</ListViewItem>
-						<ListViewItem>Distortion Guitar</ListViewItem>
-						<ListViewItem>Guitar Harmonics</ListViewItem>
-						<ListViewItem>Acoustic Bass</ListViewItem>
-						<ListViewItem>Electoric Bass (Fingar)</ListViewItem>
-						<ListViewItem>Electoric Bass (Pick)</ListViewItem>
-						<ListViewItem>Fretless Bass</ListViewItem>
-						<ListViewItem>Slap Bass 1</ListViewItem>
-						<ListViewItem>Slap Bass 2</ListViewItem>
-						<ListViewItem>Synth Bass 1</ListViewItem>
-						<ListViewItem>Synth Bass 2</ListViewItem>
-						<ListViewItem>Violin</ListViewItem>
-						<ListViewItem>Viola</ListViewItem>
-						<ListViewItem>Cello</ListViewItem>
-						<ListViewItem>Contrabass</ListViewItem>
-						<ListViewItem>Tremolo Strings</ListViewItem>
-						<ListViewItem>Pizzicato Strings</ListViewItem>
-						<ListViewItem>Orchestral Harp</ListViewItem>
-						<ListViewItem>Timpani</ListViewItem>
-						<ListViewItem>String Ensemble 1</ListViewItem>
-						<ListViewItem>String Ensemble 2</ListViewItem>
-						<ListViewItem>Synth Strings 1</ListViewItem>
-						<ListViewItem>Synth Strings 2</ListViewItem>
-						<ListViewItem>Choir Aahs</ListViewItem>
-						<ListViewItem>Voice Oohs</ListViewItem>
-						<ListViewItem>Synth Voice</ListViewItem>
-						<ListViewItem>Orchestra Hit</ListViewItem>
-						<ListViewItem>Trumpet</ListViewItem>
-						<ListViewItem>Trombone</ListViewItem>
-						<ListViewItem>Tuba</ListViewItem>
-						<ListViewItem>Muted Trumpet</ListViewItem>
-						<ListViewItem>French Horn</ListViewItem>
-						<ListViewItem>Brass Section</ListViewItem>
-						<ListViewItem>Synth Brass 1</ListViewItem>
-						<ListViewItem>Synth Brass 2</ListViewItem>
-						<ListViewItem>Soprano Sax</ListViewItem>
-						<ListViewItem>Alto Sax</ListViewItem>
-						<ListViewItem>Tenor Sax</ListViewItem>
-						<ListViewItem>Baritone Sax</ListViewItem>
-						<ListViewItem>Oboe</ListViewItem>
-						<ListViewItem>English Horn</ListViewItem>
-						<ListViewItem>Bassoon</ListViewItem>
-						<ListViewItem>Clarinet</ListViewItem>
-						<ListViewItem>Piccolo</ListViewItem>
-						<ListViewItem>Flute</ListViewItem>
-						<ListViewItem>Recorder</ListViewItem>
-						<ListViewItem>Pan Flute</ListViewItem>
-						<ListViewItem>Blown Bottle</ListViewItem>
-						<ListViewItem>Shakuhach</ListViewItem>
-						<ListViewItem>Whistle</ListViewItem>
-						<ListViewItem>Ocarina</ListViewItem>
-						<ListViewItem>Lead 1 (square)</ListViewItem>
-						<ListViewItem>Lead 2 (Sawtooth)</ListViewItem>
-						<ListViewItem>Lead 3 (Calliope)</ListViewItem>
-						<ListViewItem>Lead 4 (Chiff)</ListViewItem>
-						<ListViewItem>Lead 5 (Charang)</ListViewItem>
-						<ListViewItem>Lead 6 (Voice)</ListViewItem>
-						<ListViewItem>Lead 7 (Fifths)</ListViewItem>
-						<ListViewItem>Lead 8 (Bass+Lead)</ListViewItem>
-						<ListViewItem>Pad 1 (New age)</ListViewItem>
-						<ListViewItem>Pad 2 (Warm)</ListViewItem>
-						<ListViewItem>Pad 3 (Polysynth)</ListViewItem>
-						<ListViewItem>Pad 4 (Choir)</ListViewItem>
-						<ListViewItem>Pad 5 (Bowed)</ListViewItem>
-						<ListViewItem>Pad 6 (Metallic)</ListViewItem>
-						<ListViewItem>Pad 7 (Halo)</ListViewItem>
-						<ListViewItem>Pad 8 (Sweep)</ListViewItem>
-						<ListViewItem>FX 1 (Rain)</ListViewItem>
-						<ListViewItem>FX 2 (Soundtrack)</ListViewItem>
-						<ListViewItem>FX 3 (Crystal)</ListViewItem>
-						<ListViewItem>FX 4 (Atmosphere)</ListViewItem>
-						<ListViewItem>FX 5 (Brightness)</ListViewItem>
-						<ListViewItem>FX 6 (Goblins)</ListViewItem>
-						<ListViewItem>FX 7 (Echoes)</ListViewItem>
-						<ListViewItem>FX 8 (Sci-Fi)</ListViewItem>
-						<ListViewItem>Sitar</ListViewItem>
-						<ListViewItem>Banjo</ListViewItem>
-						<ListViewItem>Shamisen</ListViewItem>
-						<ListViewItem>Koto</ListViewItem>
-						<ListViewItem>Kalimba</ListViewItem>
-						<ListViewItem>Bag Pipe</ListViewItem>
-						<ListViewItem>Fiddle</ListViewItem>
-						<ListViewItem>Shanai</ListViewItem>
-						<ListViewItem>Tinkle Bell</ListViewItem>
-						<ListViewItem>Agogo</ListViewItem>
-						<ListViewItem>Steel Drums</ListViewItem>
-						<ListViewItem>Woodblock</ListViewItem>
-						<ListViewItem>Taiko Drum</ListViewItem>
-						<ListViewItem>Melodic Tom</ListViewItem>
-						<ListViewItem>Synth Drum</ListViewItem>
-						<ListViewItem>Reverse Cymbal</ListViewItem>
-						<ListViewItem>Guitar Fret Noise</ListViewItem>
-						<ListViewItem>Breath Noise</ListViewItem>
-						<ListViewItem>Seashore</ListViewItem>
-						<ListViewItem>Bird Tweet</ListViewItem>
-						<ListViewItem>Telephone Ring</ListViewItem>
-						<ListViewItem>Helicopter</ListViewItem>
-						<ListViewItem>Applause</ListViewItem>
-						<ListViewItem>Gunshot</ListViewItem>
+						<ListViewItem Content="Acoustic Grand Piano"/>
+						<ListViewItem Content="Bright Acoustic Piano"/>
+						<ListViewItem Content="Electoric Grand Piano"/>
+						<ListViewItem Content="Honky-tonk Piano"/>
+						<ListViewItem Content="Electoric Piano 1"/>
+						<ListViewItem Content="Electoric Piano 2"/>
+						<ListViewItem Content="Harpsichord"/>
+						<ListViewItem Content="Clavi"/>
+						<ListViewItem Content="Celesta"/>
+						<ListViewItem Content="Glockenspiel"/>
+						<ListViewItem Content="Music Box"/>
+						<ListViewItem Content="Vibraphone"/>
+						<ListViewItem Content="Marimba"/>
+						<ListViewItem Content="Xylophone"/>
+						<ListViewItem Content="Tubular Bells"/>
+						<ListViewItem Content="Dulcimer"/>
+						<ListViewItem Content="Drawbar Organ"/>
+						<ListViewItem Content="Percussive Organ"/>
+						<ListViewItem Content="Rock Organ"/>
+						<ListViewItem Content="Church Organ"/>
+						<ListViewItem Content="Reed Organ"/>
+						<ListViewItem Content="Accordion"/>
+						<ListViewItem Content="Harmonica"/>
+						<ListViewItem Content="Tango Accordion"/>
+						<ListViewItem Content="Acoustic Giutar (Nylon)"/>
+						<ListViewItem Content="Acoustic Giutar (Steel)"/>
+						<ListViewItem Content="Electoric Giutar (Jazz)"/>
+						<ListViewItem Content="Electoric Giutar (Clean)"/>
+						<ListViewItem Content="Electoric Giutar (Muted)"/>
+						<ListViewItem Content="Overdriven Guitar"/>
+						<ListViewItem Content="Distortion Guitar"/>
+						<ListViewItem Content="Guitar Harmonics"/>
+						<ListViewItem Content="Acoustic Bass"/>
+						<ListViewItem Content="Electoric Bass (Fingar)"/>
+						<ListViewItem Content="Electoric Bass (Pick)"/>
+						<ListViewItem Content="Fretless Bass"/>
+						<ListViewItem Content="Slap Bass 1"/>
+						<ListViewItem Content="Slap Bass 2"/>
+						<ListViewItem Content="Synth Bass 1"/>
+						<ListViewItem Content="Synth Bass 2"/>
+						<ListViewItem Content="Violin"/>
+						<ListViewItem Content="Viola"/>
+						<ListViewItem Content="Cello"/>
+						<ListViewItem Content="Contrabass"/>
+						<ListViewItem Content="Tremolo Strings"/>
+						<ListViewItem Content="Pizzicato Strings"/>
+						<ListViewItem Content="Orchestral Harp"/>
+						<ListViewItem Content="Timpani"/>
+						<ListViewItem Content="String Ensemble 1"/>
+						<ListViewItem Content="String Ensemble 2"/>
+						<ListViewItem Content="Synth Strings 1"/>
+						<ListViewItem Content="Synth Strings 2"/>
+						<ListViewItem Content="Choir Aahs"/>
+						<ListViewItem Content="Voice Oohs"/>
+						<ListViewItem Content="Synth Voice"/>
+						<ListViewItem Content="Orchestra Hit"/>
+						<ListViewItem Content="Trumpet"/>
+						<ListViewItem Content="Trombone"/>
+						<ListViewItem Content="Tuba"/>
+						<ListViewItem Content="Muted Trumpet"/>
+						<ListViewItem Content="French Horn"/>
+						<ListViewItem Content="Brass Section"/>
+						<ListViewItem Content="Synth Brass 1"/>
+						<ListViewItem Content="Synth Brass 2"/>
+						<ListViewItem Content="Soprano Sax"/>
+						<ListViewItem Content="Alto Sax"/>
+						<ListViewItem Content="Tenor Sax"/>
+						<ListViewItem Content="Baritone Sax"/>
+						<ListViewItem Content="Oboe"/>
+						<ListViewItem Content="English Horn"/>
+						<ListViewItem Content="Bassoon"/>
+						<ListViewItem Content="Clarinet"/>
+						<ListViewItem Content="Piccolo"/>
+						<ListViewItem Content="Flute"/>
+						<ListViewItem Content="Recorder"/>
+						<ListViewItem Content="Pan Flute"/>
+						<ListViewItem Content="Blown Bottle"/>
+						<ListViewItem Content="Shakuhach"/>
+						<ListViewItem Content="Whistle"/>
+						<ListViewItem Content="Ocarina"/>
+						<ListViewItem Content="Lead 1 (square)"/>
+						<ListViewItem Content="Lead 2 (Sawtooth)"/>
+						<ListViewItem Content="Lead 3 (Calliope)"/>
+						<ListViewItem Content="Lead 4 (Chiff)"/>
+						<ListViewItem Content="Lead 5 (Charang)"/>
+						<ListViewItem Content="Lead 6 (Voice)"/>
+						<ListViewItem Content="Lead 7 (Fifths)"/>
+						<ListViewItem Content="Lead 8 (Bass+Lead)"/>
+						<ListViewItem Content="Pad 1 (New age)"/>
+						<ListViewItem Content="Pad 2 (Warm)"/>
+						<ListViewItem Content="Pad 3 (Polysynth)"/>
+						<ListViewItem Content="Pad 4 (Choir)"/>
+						<ListViewItem Content="Pad 5 (Bowed)"/>
+						<ListViewItem Content="Pad 6 (Metallic)"/>
+						<ListViewItem Content="Pad 7 (Halo)"/>
+						<ListViewItem Content="Pad 8 (Sweep)"/>
+						<ListViewItem Content="FX 1 (Rain)"/>
+						<ListViewItem Content="FX 2 (Soundtrack)"/>
+						<ListViewItem Content="FX 3 (Crystal)"/>
+						<ListViewItem Content="FX 4 (Atmosphere)"/>
+						<ListViewItem Content="FX 5 (Brightness)"/>
+						<ListViewItem Content="FX 6 (Goblins)"/>
+						<ListViewItem Content="FX 7 (Echoes)"/>
+						<ListViewItem Content="FX 8 (Sci-Fi)"/>
+						<ListViewItem Content="Sitar"/>
+						<ListViewItem Content="Banjo"/>
+						<ListViewItem Content="Shamisen"/>
+						<ListViewItem Content="Koto"/>
+						<ListViewItem Content="Kalimba"/>
+						<ListViewItem Content="Bag Pipe"/>
+						<ListViewItem Content="Fiddle"/>
+						<ListViewItem Content="Shanai"/>
+						<ListViewItem Content="Tinkle Bell"/>
+						<ListViewItem Content="Agogo"/>
+						<ListViewItem Content="Steel Drums"/>
+						<ListViewItem Content="Woodblock"/>
+						<ListViewItem Content="Taiko Drum"/>
+						<ListViewItem Content="Melodic Tom"/>
+						<ListViewItem Content="Synth Drum"/>
+						<ListViewItem Content="Reverse Cymbal"/>
+						<ListViewItem Content="Guitar Fret Noise"/>
+						<ListViewItem Content="Breath Noise"/>
+						<ListViewItem Content="Seashore"/>
+						<ListViewItem Content="Bird Tweet"/>
+						<ListViewItem Content="Telephone Ring"/>
+						<ListViewItem Content="Helicopter"/>
+						<ListViewItem Content="Applause"/>
+						<ListViewItem Content="Gunshot"/>
 					</ListView>
 				</controls:MetroTabItem>
 			</controls:MetroAnimatedTabControl>
@@ -256,7 +258,7 @@
 					<RowDefinition Height="1"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				
+
 				<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" ResizeDirection="Rows"/>
 				<controls:MetroAnimatedSingleRowTabControl Grid.Row="2" TabStripPlacement="Bottom">
 					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18"/>

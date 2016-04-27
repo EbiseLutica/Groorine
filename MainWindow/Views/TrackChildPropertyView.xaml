@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Groorine.Views.TrackChildPropertyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Groorine.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="512" d:DesignWidth="96">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<StackPanel Grid.Column="0" VerticalAlignment="Bottom">
+
+		<Button Content="Setting" Margin="4,0,4,4" IsTabStop="False"/>
+		<Button Content="EQ" Margin="4,0,4,4" IsTabStop="False"/>
+		<!-- MIDI FX -->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="64" Margin="4,0,4,4">
+			<ItemsControl Grid.IsSharedSizeScope="True">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Button Content="{Binding}" IsTabStop="False"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+
+		<Button Content="Instrument" Margin="4,0,4,4" IsTabStop="False"/>
+
+		<!-- Audio FX -->
+		<ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="64" Margin="4,0,4,4">
+			<ItemsControl Grid.IsSharedSizeScope="True">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Button Content="{Binding}" IsTabStop="False"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+
+		<DockPanel Margin="4,0,4,4" >
+			<TextBlock Text="L" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
+			<TextBlock Text="R" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+			<Slider Maximum="127" Minimum="-128" SmallChange="1" IsTabStop="False" />
+		</DockPanel>
+		<Grid Margin="16,0,16,4">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Slider Orientation="Vertical" Maximum="127" SmallChange="1" TickPlacement="BottomRight" HorizontalAlignment="Center" IsTabStop="False" TickFrequency="16" Margin="4"/>
+			<ProgressBar Orientation="Vertical" Grid.Column="1" Width="8" Height="128" Margin="0,4"/>
+			<Button Content="M" Grid.Row="1" Padding="0" Margin="1" IsTabStop="False"/>
+			<Button Content="S" Grid.Row="1" Grid.Column="1" Padding="0" Margin="1" IsTabStop="False"/>
+		</Grid>
+		<Label Content="Piano" HorizontalContentAlignment="Center"/>
+	</StackPanel >
+</UserControl>

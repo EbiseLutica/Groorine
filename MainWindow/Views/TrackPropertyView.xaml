@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Groorine.Views.TrackPropertyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Groorine.Views"
+			 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+		xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="192">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="92"/>
+			<ColumnDefinition Width="1"/>
+			<ColumnDefinition Width="92"/>
+		</Grid.ColumnDefinitions>
+		<local:TrackChildPropertyView Grid.Column="0" />
+		<local:TrackChildPropertyView Grid.Column="2"  />
+
+		<Border BorderBrush="White" Grid.Column="1" BorderThickness="1" Margin="0,8" Opacity="0.7"/>
+	</Grid>
+</UserControl>
