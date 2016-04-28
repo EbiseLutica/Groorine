@@ -1,54 +1,53 @@
 Groorine
 ==============
 
-���{�� �� [English](readme.md)
+日本語 ＊ [English](readme.md)
 
-[![�r���h���](https://ci.appveyor.com/api/projects/status/7n31q63fbt037v84?svg=true)](https://ci.appveyor.com/project/Citringo/groorine) 
+[![ビルド情報](https://ci.appveyor.com/api/projects/status/7n31q63fbt037v84?svg=true)](https://ci.appveyor.com/project/Citringo/groorine) 
 
-![���̃r���h�� MainWindow �̃X�N���[���V���b�g](top-screenshot.png "MainWindow �X�N���[���V���b�g")
+![このビルドの MainWindow のスクリーンショット](top-screenshot.png "MainWindow スクリーンショット")
 
-Groorine �́CDTM�A�v�����J������I�[�v���\�[�X�v���W�F�N�g�ł��D���̃v���W�F�N�g�͎��̉ۑ茤������n�܂��Ă��܂��D
+Groorine は，DTMアプリを開発するオープンソースプロジェクトです．このプロジェクトは私の課題研究から始まっています．
 
-## �ڍ�
+## 詳細
 
-���͂悭 Domino �� Logic Pro X �ŉ��y�̑ł����݂����Ă��܂��D
+私はよく Domino や Logic Pro X で音楽の打ち込みをしています．
 
-I want a music editor which has these good points. And I have wanted to create my original music editor.
-���̂Q�̗ǂ��_���������~���[�W�b�N�G�f�B�^�[���~�����̂ł��D�܂��C�ȑO���玩���̃I���W�i���̃~���[�W�b�N�G�f�B�^�[����肽���Ǝv���Ă��܂����D
+この２つの良い点を持ったミュージックエディターが欲しいのです．また，以前から自分のオリジナルのミュージックエディターを作りたいと思っていました．
 
-## �r���h���@
+## ビルド方法
 
-1. git �R�}���h�Ńv���W�F�N�g���茳�ɕ������Ă��������D `% git clone https://github.com/Citringo/Groorine.git`
-1. Visual Studio 2015 �Ń\�����[�V�������J���Ă��������D
-1. `F5` �������ăv���W�F�N�g���r���h���Ă��������D
+1. git コマンドでプロジェクトを手元に複製してください． `% git clone https://github.com/Citringo/Groorine.git`
+1. Visual Studio 2015 でソリューションを開いてください．
+1. `F5` を押してプロジェクトをビルドしてください．
 
-## �������
-Groorine �́C Windows �� ".NET Framework 4.5.2" �̏�œ��삵�܂��D
+## 動作条件
+Groorine は， Windows と ".NET Framework 4.5.2" の上で動作します．
 
-WPF ���T�|�[�g���Ȃ��Ǝv����(������) wine-mono �ł͓��삵�Ȃ��ł��傤�D
+WPF をサポートしないと思われる(未検証) wine-mono では動作しないでしょう．
 
-�����v���W�F�N�g������������Cosx �ɈڐA���邱�Ƃ��l���Ă��܂��D
+もしプロジェクトが完了したら，osx に移植することも考えています．
 
-## �v��
-���S�ȃR�[�f�B���O�K���𐻍쒆�ł��D ���݂́C���L�̊ȈՂȋK���ɑ����Ă��������D
+## 貢献
+完全なコーディング規則を製作中です． 現在は，下記の簡易な規則に則ってください．
 
-���̃v���W�F�N�g�Ŏg�p���Ă���R�[�f�B���O�K���́C [C# �R�[�f�B���O�K��](https://msdn.microsoft.com/library/ff926074.aspx)�ɋ߂��ł��D
-�������C�������̗�O������܂�:
+このプロジェクトで使用しているコーディング規則は， [C# コーディング規則](https://msdn.microsoft.com/library/ff926074.aspx)に近いです．
+しかし，いくつかの例外があります:
 
-- �^�u�����͕ێ����Ă��������D�X�y�[�X�ɕϊ����Ȃ��ł��������D
+- タブ文字は保持してください．スペースに変換しないでください．
 
-�v���W�F�N�g�ɍv�����Ă������́C [�v�����N�G�X�g](/Citringo/Groorine/pulls)�𓊍e���Ă�������.
+プロジェクトに貢献してくれる方は， [プルリクエスト](/Citringo/Groorine/pulls)を投稿してください.
 
-## �ӌ�
-�ӌ��Ȃǂ� [Issues](/Citringo/Groorine/issues) �������p���������D
+## 意見
+意見などは [Issues](/Citringo/Groorine/issues) をご活用ください．
 
-Issues �ɓ��e����ۂ́C���̓��e��K���܂߂Ă��������D
+Issues に投稿する際は，次の内容を必ず含めてください．
 
-- **�o�[�W����** (ex: 0.0.1)
-- **���Ȃ��̊��̃o�[�W����** (example: Windows 10 Pro Insider Preview 14328)
-	- �ڍׂȏ������肢���܂��D
+- **バージョン** (例: 0.0.1)
+- **あなたの環境のバージョン** (例: Windows 10 Pro Insider Preview 14328)
+	- 詳細な情報をお願いします．
 
-## ���C�Z���X
-���̃v���W�F�N�g�� MIT ���C�Z���X�ł��D [LICENSE](LICENSE) ���������������D
+## ライセンス
+このプロジェクトは MIT ライセンスです． [LICENSE](LICENSE) をご覧ください．
 
 *(C) 2016 Citringo and GitHub Contributor*
