@@ -8,7 +8,11 @@
         xmlns:Views="clr-namespace:Groorine.Views"
         mc:Ignorable="d"
         Title="Groorine" Height="599.6" Width="800" Background="Black"
-		UseLayoutRounding="True" ResizeMode="CanResizeWithGrip">
+		UseLayoutRounding="True" ResizeMode="CanResizeWithGrip"
+	>
+	<Window.DataContext>
+		<local:GroorineViewModel/>
+	</Window.DataContext>
 
 	<controls:MetroWindow.Resources>
 		<ResourceDictionary>
@@ -252,16 +256,19 @@
 				</controls:MetroTabItem>
 			</controls:MetroAnimatedTabControl>
 			<GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-			<Grid Grid.Column="2">
+			<Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,1,0">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
 					<RowDefinition Height="1"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-
 				<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" ResizeDirection="Rows"/>
 				<controls:MetroAnimatedSingleRowTabControl Grid.Row="2" TabStripPlacement="Bottom">
-					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18"/>
+					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18">
+						<TextBlock TextWrapping="Wrap">
+							あ❗️スーモ❗️🌚ダン💥ダン💥ダン💥シャーン🎶スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚ス〜〜〜モ⤴🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚ス〜〜〜モ⤵🌚
+						</TextBlock>
+					</TabItem>
 					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18"/>
 				</controls:MetroAnimatedSingleRowTabControl>
 			</Grid>

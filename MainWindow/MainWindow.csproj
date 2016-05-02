@@ -63,7 +63,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Track.cs" />
+    <Compile Include="Models\ConductorEvents.cs" />
+    <Compile Include="Models\ConductorTrack.cs" />
+    <Compile Include="Models\MetaData.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\PlayerEvents.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\Regions.cs" />
+    <Compile Include="Models\Timeline.cs" />
+    <Compile Include="Models\PlayerTrack.cs" />
+    <Compile Include="Modules\TestEffects.cs" />
+    <Compile Include="Modules\TestInstrument.cs" />
+    <Compile Include="GroorineViewModel.cs" />
     <Compile Include="Views\TrackChildPropertyView.xaml.cs">
       <DependentUpon>TrackChildPropertyView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +168,9 @@
   <ItemGroup>
     <Resource Include="Resources\next.png" />
     <Resource Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

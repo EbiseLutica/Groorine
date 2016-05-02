@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="Groorine.Views.TrackChildPropertyView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Groorine.Views"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Groorine.Views.TrackChildPropertyView"
              mc:Ignorable="d" 
              d:DesignHeight="512" d:DesignWidth="96">
 	<UserControl.Resources>
@@ -15,51 +16,38 @@
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
 			</ResourceDictionary.MergedDictionaries>
+
+			<BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 		</ResourceDictionary>
 	</UserControl.Resources>
 
 	<StackPanel Grid.Column="0" VerticalAlignment="Bottom">
 
-		<Button Content="Setting" Margin="4,0,4,4" IsTabStop="False"/>
-		<Button Content="EQ" Margin="4,0,4,4" IsTabStop="False"/>
+		<Button Content="Setting" Margin="4,0,4,4" IsTabStop="False" Custom:ControlsHelper.ContentCharacterCasing="Normal"/>
+		<Button Content="EQ" Margin="4,0,4,4" IsTabStop="False" Custom:ControlsHelper.ContentCharacterCasing="Normal"/>
 		<!-- MIDI FX -->
-		<ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="64" Margin="4,0,4,4">
-			<ItemsControl Grid.IsSharedSizeScope="True">
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<StackPanel />
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Button Content="{Binding}" IsTabStop="False"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-		</ScrollViewer>
-
-		<Button Content="Instrument" Margin="4,0,4,4" IsTabStop="False"/>
+		<ListBox ItemsSource="{Binding MidiEffectors}" Visibility="{Binding IsMidiTrack, Converter={StaticResource ResourceKey=BoolToVisibility}}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button Content="{Binding Instrument.Name}" Margin="4,0,4,4" IsTabStop="False" Visibility="{Binding IsMidiTrack, Converter={StaticResource BoolToVisibility}}"/>
 
 		<!-- Audio FX -->
-		<ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="64" Margin="4,0,4,4">
-			<ItemsControl Grid.IsSharedSizeScope="True">
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<StackPanel />
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<Button Content="{Binding}" IsTabStop="False"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-		</ScrollViewer>
+		<ListBox ItemsSource="{Binding AudioEffectors}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
 
 		<DockPanel Margin="4,0,4,4" >
 			<TextBlock Text="L" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
 			<TextBlock Text="R" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
-			<Slider Maximum="127" Minimum="-128" SmallChange="1" IsTabStop="False" />
+			<Slider Maximum="127" Minimum="-128" Value="{Binding Panpot}" SmallChange="1" IsTabStop="False" AutoToolTipPlacement="BottomRight" />
 		</DockPanel>
 		<Grid Margin="16,0,16,4">
 			<Grid.RowDefinitions>
@@ -70,11 +58,11 @@
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<Slider Orientation="Vertical" Maximum="127" SmallChange="1" TickPlacement="BottomRight" HorizontalAlignment="Center" IsTabStop="False" TickFrequency="16" Margin="4"/>
+			<Slider Orientation="Vertical" Maximum="0" TickPlacement="BottomRight" HorizontalAlignment="Center" IsTabStop="False" TickFrequency="16" Margin="4" Minimum="-1" SmallChange="0"/>
 			<ProgressBar Orientation="Vertical" Grid.Column="1" Width="8" Height="128" Margin="0,4"/>
-			<Button Content="M" Grid.Row="1" Padding="0" Margin="1" IsTabStop="False"/>
-			<Button Content="S" Grid.Row="1" Grid.Column="1" Padding="0" Margin="1" IsTabStop="False"/>
+			<ToggleButton Content="M" Grid.Row="1" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsMute}"/>
+			<ToggleButton Content="S" Grid.Row="1" Grid.Column="1" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsSolo}"/>
 		</Grid>
-		<Label Content="Piano" HorizontalContentAlignment="Center"/>
-	</StackPanel >
+		<Label Content="{Binding Name}" HorizontalContentAlignment="Center"/>
+	</StackPanel>
 </UserControl>

@@ -8,7 +8,8 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 		xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="192">
+             d:DesignHeight="600" d:DesignWidth="192"
+			 >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -26,7 +27,7 @@
 			<ColumnDefinition Width="1"/>
 			<ColumnDefinition Width="92"/>
 		</Grid.ColumnDefinitions>
-		<local:TrackChildPropertyView Grid.Column="0" />
+		<local:TrackChildPropertyView Grid.Column="0" DataContext="{Binding CurrentTrack}"/>
 		<local:TrackChildPropertyView Grid.Column="2"  />
 
 		<Border BorderBrush="White" Grid.Column="1" BorderThickness="1" Margin="0,8" Opacity="0.7"/>
