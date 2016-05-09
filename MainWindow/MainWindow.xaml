@@ -13,18 +13,8 @@
 	<Window.DataContext>
 		<local:GroorineViewModel/>
 	</Window.DataContext>
+	
 
-	<controls:MetroWindow.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</controls:MetroWindow.Resources>
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="ファイル(_F)">
@@ -265,12 +255,11 @@
 				<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" ResizeDirection="Rows"/>
 				<controls:MetroAnimatedSingleRowTabControl Grid.Row="2" TabStripPlacement="Bottom">
 					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18">
-						<TextBlock TextWrapping="Wrap">
-							あ❗️スーモ❗️🌚ダン💥ダン💥ダン💥シャーン🎶スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚ス〜〜〜モ⤴🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚スモ🌚ス〜〜〜モ⤵🌚
-						</TextBlock>
+						
 					</TabItem>
 					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18"/>
 				</controls:MetroAnimatedSingleRowTabControl>
+				<Views:Timeline/>
 			</Grid>
 		</Grid>
 	</DockPanel>

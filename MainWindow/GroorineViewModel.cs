@@ -7,16 +7,18 @@ using System.Collections.ObjectModel;
 namespace Groorine
 {
 	using Models;
-	using Modules;
-	public class GroorineViewModel
+	using Plugins;
+	using System.Windows.Data;
+	using System.Windows.Input;
+	public partial class GroorineViewModel
 	{
 		
 		Project project = new Project();
 
 		public Project CurrentProject => project;
 
-		public PlayerTrack CurrentTrack { get; private set; }
-
+		public PlayerTrack CurrentTrack { get; set; }
+		
 		public GroorineViewModel()
 		{
 			var pt = new PlayerTrack
@@ -25,10 +27,17 @@ namespace Groorine
 			};
 			pt.AudioEffectors.Add(new TestAudioEffect());
 			pt.AudioEffectors.Add(new TestAudioEffect());
+			pt.Name = "TestInstrument";
 			pt.IsMidiTrack = true;
 			project.Timeline.Players.Add(pt);
 			CurrentTrack = pt;
+
+			AddTrack = new AddTrackCommand(this);
+			CopyTrack = new CopyTrackCommand(this);
+
+
 		}
+
 
 	}
 }

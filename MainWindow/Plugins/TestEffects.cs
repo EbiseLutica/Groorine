@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Groorine.Modules
+namespace Groorine.Plugins
 {
 	public class TestAudioEffect : IAudioEffector
 	{

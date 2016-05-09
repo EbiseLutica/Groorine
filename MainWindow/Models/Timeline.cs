@@ -16,6 +16,7 @@ namespace Groorine.Models
 
 		public Timeline()
 		{
+			
 			BindingOperations.EnableCollectionSynchronization(Players, new object());
 		}
 

@@ -10,17 +10,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="192"
 			 >
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</UserControl.Resources>
 	<Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="92"/>
@@ -28,7 +17,7 @@
 			<ColumnDefinition Width="92"/>
 		</Grid.ColumnDefinitions>
 		<local:TrackChildPropertyView Grid.Column="0" DataContext="{Binding CurrentTrack}"/>
-		<local:TrackChildPropertyView Grid.Column="2"  />
+		<local:TrackChildPropertyView Grid.Column="2"/>
 
 		<Border BorderBrush="White" Grid.Column="1" BorderThickness="1" Margin="0,8" Opacity="0.7"/>
 	</Grid>

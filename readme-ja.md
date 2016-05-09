@@ -1,53 +1,53 @@
 Groorine
 ==============
 
-日本語 ＊ [English](readme.md)
+日本誁E�E�E[English](readme.md)
 
 [![ビルド情報](https://ci.appveyor.com/api/projects/status/7n31q63fbt037v84?svg=true)](https://ci.appveyor.com/project/Citringo/groorine) 
 
-![このビルドの MainWindow のスクリーンショット](top-screenshot.png "MainWindow スクリーンショット")
+![こ�Eビルド�E MainWindow のスクリーンショチE��](top-screenshot.png "MainWindow スクリーンショチE��")
 
-Groorine は，DTMアプリを開発するオープンソースプロジェクトです．このプロジェクトは私の課題研究から始まっています．
+Groorine は�E�DTMアプリを開発するオープンソースプロジェクトです．このプロジェクト�E私�E課題研究から始まってぁE��す！E
 
 ## 詳細
 
-私はよく Domino や Logic Pro X で音楽の打ち込みをしています．
+私�Eよく Domino めELogic Pro X で音楽の打ち込みをしてぁE��す！E
 
-この２つの良い点を持ったミュージックエディターが欲しいのです．また，以前から自分のオリジナルのミュージックエディターを作りたいと思っていました．
+こ�E�E�つの良ぁE��を持ったミュージチE��エチE��ターが欲しいのです．また，以前から�E刁E�EオリジナルのミュージチE��エチE��ターを作りたいと思ってぁE��した�E�E
 
-## ビルド方法
+## ビルド方況E
 
-1. git コマンドでプロジェクトを手元に複製してください． `% git clone https://github.com/Citringo/Groorine.git`
-1. Visual Studio 2015 でソリューションを開いてください．
-1. `F5` を押してプロジェクトをビルドしてください．
+1. git コマンドでプロジェクトを手�Eに褁E��してください�E�E`% git clone https://github.com/Citringo/Groorine.git`
+1. Visual Studio 2015 でソリューションを開ぁE��ください�E�E
+1. `F5` を押してプロジェクトをビルドしてください�E�E
 
 ## 動作条件
-Groorine は， Windows と ".NET Framework 4.5.2" の上で動作します．
+Groorine は�E�EWindows と ".NET Framework 4.5.2" の上で動作します！E
 
-WPF をサポートしないと思われる(未検証) wine-mono では動作しないでしょう．
+WPF をサポ�EトしなぁE��思われる(未検証) wine-mono では動作しなぁE��しょぁE��E
 
-もしプロジェクトが完了したら，osx に移植することも考えています．
+もしプロジェクトが完亁E��たら�E�osx に移植することも老E��てぁE��す！E
 
 ## 貢献
-完全なコーディング規則を製作中です． 現在は，下記の簡易な規則に則ってください．
+完�EなコーチE��ング規則を製作中です！E現在は�E�下記�E簡易な規則に剁E��てください�E�E
 
-このプロジェクトで使用しているコーディング規則は， [C# コーディング規則](https://msdn.microsoft.com/library/ff926074.aspx)に近いです．
-しかし，いくつかの例外があります:
+こ�Eプロジェクトで使用してぁE��コーチE��ング規則は�E�E[C# コーチE��ング規則](https://msdn.microsoft.com/library/ff926074.aspx)に近いです！E
+しかし，いくつか�E例外がありまぁE
 
-- タブ文字は保持してください．スペースに変換しないでください．
+- タブ文字�E保持してください�E�スペ�Eスに変換しなぁE��ください�E�E
 
-プロジェクトに貢献してくれる方は， [プルリクエスト](/Citringo/Groorine/pulls)を投稿してください.
+プロジェクトに貢献してくれる方は�E�E[プルリクエスチE(/Citringo/Groorine/pulls)を投稿してください.
 
-## 意見
-意見などは [Issues](/Citringo/Groorine/issues) をご活用ください．
+## 意要E
+意見などは [Issues](/Citringo/Groorine/issues) をご活用ください�E�E
 
-Issues に投稿する際は，次の内容を必ず含めてください．
+Issues に投稿する際�E�E�次の冁E��を忁E��含めてください�E�E
 
-- **バージョン** (例: 0.0.1)
-- **あなたの環境のバージョン** (例: Windows 10 Pro Insider Preview 14328)
-	- 詳細な情報をお願いします．
+- **バ�Eジョン** (侁E 0.0.1)
+- **あなた�E環墁E�Eバ�Eジョン** (侁E Windows 10 Pro Insider Preview 14328)
+	- 詳細な惁E��をお願いします！E
 
 ## ライセンス
-このプロジェクトは MIT ライセンスです． [LICENSE](LICENSE) をご覧ください．
+こ�Eプロジェクト�E MIT ライセンスです！E[LICENSE](LICENSE) をご覧ください�E�E
 
 *(C) 2016 Citringo and GitHub Contributor*

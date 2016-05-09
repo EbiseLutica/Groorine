@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA134\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -63,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DecibelConverter.cs" />
+    <Compile Include="GroorineViewModel.commands.cs" />
+    <Compile Include="GroorineViewModel.cs" />
     <Compile Include="Models\ConductorEvents.cs" />
     <Compile Include="Models\ConductorTrack.cs" />
     <Compile Include="Models\MetaData.cs" />
@@ -72,9 +76,15 @@
     <Compile Include="Models\Regions.cs" />
     <Compile Include="Models\Timeline.cs" />
     <Compile Include="Models\PlayerTrack.cs" />
-    <Compile Include="Modules\TestEffects.cs" />
-    <Compile Include="Modules\TestInstrument.cs" />
-    <Compile Include="GroorineViewModel.cs" />
+    <Compile Include="Plugins\TestEffects.cs" />
+    <Compile Include="Plugins\TestInstrument.cs" />
+    <Compile Include="ScrollSyncronizingBehavior.cs" />
+    <Compile Include="Controls\Dial.xaml.cs">
+      <DependentUpon>Dial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Timeline.xaml.cs">
+      <DependentUpon>Timeline.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrackChildPropertyView.xaml.cs">
       <DependentUpon>TrackChildPropertyView.xaml</DependentUpon>
     </Compile>
@@ -93,6 +103,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Controls\Dial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Timeline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TrackChildPropertyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +189,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Add_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CopyToClipboard_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

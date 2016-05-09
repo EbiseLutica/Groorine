@@ -4,25 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Groorine.Views"
+			 xmlns:ctrls="clr-namespace:Groorine.Controls"
+			 xmlns:root="clr-namespace:Groorine"
              xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Groorine.Views.TrackChildPropertyView"
              mc:Ignorable="d" 
              d:DesignHeight="512" d:DesignWidth="96">
 	<UserControl.Resources>
 		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-
 			<BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 		</ResourceDictionary>
 	</UserControl.Resources>
 
 	<StackPanel Grid.Column="0" VerticalAlignment="Bottom">
-
+	
 		<Button Content="Setting" Margin="4,0,4,4" IsTabStop="False" Custom:ControlsHelper.ContentCharacterCasing="Normal"/>
 		<Button Content="EQ" Margin="4,0,4,4" IsTabStop="False" Custom:ControlsHelper.ContentCharacterCasing="Normal"/>
 		<!-- MIDI FX -->
@@ -43,14 +37,13 @@
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
-
-		<DockPanel Margin="4,0,4,4" >
-			<TextBlock Text="L" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
-			<TextBlock Text="R" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
-			<Slider Maximum="127" Minimum="-128" Value="{Binding Panpot}" SmallChange="1" IsTabStop="False" AutoToolTipPlacement="BottomRight" />
-		</DockPanel>
+		<ctrls:Dial Value="{Binding Panpot, Mode=TwoWay}"/>
 		<Grid Margin="16,0,16,4">
+			<Grid.Resources>
+				<root:DecibelConverter x:Key="decibel"/>
+			</Grid.Resources>
 			<Grid.RowDefinitions>
+				<RowDefinition Height="24"/>
 				<RowDefinition Height="auto"/>
 				<RowDefinition Height="auto"/>
 			</Grid.RowDefinitions>
@@ -58,10 +51,12 @@
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<Slider Orientation="Vertical" Maximum="0" TickPlacement="BottomRight" HorizontalAlignment="Center" IsTabStop="False" TickFrequency="16" Margin="4" Minimum="-1" SmallChange="0"/>
-			<ProgressBar Orientation="Vertical" Grid.Column="1" Width="8" Height="128" Margin="0,4"/>
-			<ToggleButton Content="M" Grid.Row="1" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsMute}"/>
-			<ToggleButton Content="S" Grid.Row="1" Grid.Column="1" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsSolo}"/>
+			<TextBlock TextAlignment="Center" Text="{Binding ElementName=volSlider, Path=Value, Converter ={StaticResource decibel}, StringFormat={}{0:#0.#}}"/>
+			<Slider x:Name="volSlider" Grid.Row="1" Orientation="Vertical" Maximum="2" TickPlacement="BottomRight" HorizontalAlignment="Center" IsTabStop="False" TickFrequency="16" Margin="4" SmallChange="0.01" Value="{Binding Volume, Mode=TwoWay}" LargeChange="0.5"/>
+			<TextBlock Grid.Column="1" TextAlignment="Center" Text="{Binding MaxOutput, Converter={StaticResource decibel}, StringFormat={}{0:#0.#}}"/>
+			<ProgressBar Grid.Row="1" Orientation="Vertical" Grid.Column="1" Width="8" Height="128" Margin="0,4" Maximum="2" Value="{Binding Output}"/>
+			<ToggleButton Content="M" Grid.Row="2" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsMute, Mode=TwoWay}"/>
+			<ToggleButton Content="S" Grid.Row="2" Grid.Column="1" Padding="0" Margin="1" IsTabStop="False" IsChecked="{Binding IsSolo, Mode=TwoWay}"/>
 		</Grid>
 		<Label Content="{Binding Name}" HorizontalContentAlignment="Center"/>
 	</StackPanel>

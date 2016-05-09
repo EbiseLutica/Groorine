@@ -15,17 +15,97 @@ namespace Groorine.Models
 		public ObservableCollection<IAudioEffector> AudioEffectors { get; } = new ObservableCollection<IAudioEffector>();
 		public bool IsMidiTrack { get; set; }
 		public ObservableCollection<Region> Regions { get; } = new ObservableCollection<Region>();
-		public int Panpot { get; set; }
-		public string Name { get; set; }
-		public double Volume { get; set; }
-		public bool IsMute { get; set; }
-		public bool IsSolo { get; set; }
+
+		public int Panpot
+		{
+			get
+			{
+				return panpot;
+			}
+			set
+			{
+				panpot = value;
+				NotifyPropertyChanged(nameof(Panpot));
+			}
+		}
+		public string Name
+		{
+			get
+			{
+				return name;
+			}
+			set
+			{
+				name = value;
+				NotifyPropertyChanged(nameof(Name));
+			}
+		}
+		public double Volume
+		{
+			get
+			{
+				return volume;
+			}
+			set
+			{
+				volume = value;
+				NotifyPropertyChanged(nameof(Volume));
+			}
+		}
+		public bool IsMute
+		{
+			get
+			{
+				return ismute;
+			}
+			set
+			{
+				ismute = value;
+				NotifyPropertyChanged(nameof(IsMute));
+			}
+		}
+		public bool IsSolo
+		{
+			get
+			{
+				return issolo;
+			}
+			set
+			{
+				issolo = value;
+				NotifyPropertyChanged(nameof(IsSolo));
+			}
+		}
+
+		public double MaxOutput { get; private set; }
+		public double Output { get; set; }
+
+		private int panpot;
+		private string name;
+		private double volume;
+		private bool ismute;
+		private bool issolo;
 
 		public PlayerTrack()
 		{
 			BindingOperations.EnableCollectionSynchronization(MidiEffectors, new object());
 			BindingOperations.EnableCollectionSynchronization(AudioEffectors, new object());
 			BindingOperations.EnableCollectionSynchronization(Regions, new object());
+		}
+
+		public PlayerTrack(PlayerTrack t)
+		{
+			Panpot = t.Panpot;
+			IsMute = t.IsMute;
+			IsSolo = t.IsSolo;
+			Volume = t.Volume;
+			Name = t.Name;
+			IsMidiTrack = t.IsMidiTrack;
+			Instrument = Activator.CreateInstance(t.Instrument.GetType()) as IInstrument;
+			foreach (IAudioEffector ae in t.AudioEffectors)
+				AudioEffectors.Add(Activator.CreateInstance(ae.GetType()) as IAudioEffector);
+			foreach (IMidiEffector me in t.MidiEffectors)
+				MidiEffectors.Add(Activator.CreateInstance(me.GetType()) as IMidiEffector);
 		}
 
 	}
