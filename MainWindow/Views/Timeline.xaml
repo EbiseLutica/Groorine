@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+			 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 			 xmlns:root="clr-namespace:Groorine"
+			 xmlns:behaviors="clr-namespace:Groorine.Behaviors"
              xmlns:local="clr-namespace:Groorine.Views"
              xmlns:ctrls="clr-namespace:Groorine.Controls"
              mc:Ignorable="d" 
@@ -13,15 +15,27 @@
 		<ScrollBar DockPanel.Dock="Right" Width="16" Orientation="Vertical" 
 				   Maximum="{Binding ElementName=regions, Path=ScrollableHeight}"
 				   ViewportSize="{Binding ElementName=regions, Path=ActualHeight}"
-				   LargeChange="{Binding ElementName=regions, Path=ActualHeight}"/>
+				   LargeChange="{Binding ElementName=regions, Path=ActualHeight}">
+			<i:Interaction.Behaviors>
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
+			</i:Interaction.Behaviors>
+		</ScrollBar>
+		<ScrollBar DockPanel.Dock="Bottom" Height="16" Orientation="Horizontal" 
+				   Maximum="{Binding ElementName=regions, Path=ScrollableWidth}"
+				   ViewportSize="{Binding ElementName=regions, Path=ActualWidth}"
+				   LargeChange="{Binding ElementName=regions, Path=ActualWidth}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+			<i:Interaction.Behaviors>
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group2" Orientation="Horizontal" />
+			</i:Interaction.Behaviors>
+		</ScrollBar>
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="192"/>
 				<ColumnDefinition Width="1"/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<DockPanel Grid.Column="0" Height="299">
-				<ToolBar DockPanel.Dock="Top" Height="auto" VerticalAlignment="Top">
+			<DockPanel Grid.Column="0">
+				<ToolBar x:Name="toolbar" DockPanel.Dock="Top" Height="27" VerticalAlignment="Top">
 					<Button Command="{Binding AddTrack}">
 						<Image Source="/Groorine;component/Resources/Add_16x.png" Stretch="None"/>
 					</Button>
@@ -29,20 +43,28 @@
 						<Image Source="/Groorine;component/Resources/CopyToClipboard_16x.png" Stretch="None"/>
 					</Button>
 				</ToolBar>
+				<ListBox VirtualizingPanel.ScrollUnit="Pixel" ItemsSource="{Binding CurrentProject.Timeline.Players}" SelectedItem="{Binding CurrentTrack, Mode=TwoWay}" x:Name="trackInfos" IsSynchronizedWithCurrentItem="True" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" VerticalAlignment="Top" ScrollViewer.CanContentScroll="True">
+					<ListBox.Template>
+						<ControlTemplate TargetType="{x:Type ListBox}">
+							<Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+								<ScrollViewer CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+									<i:Interaction.Behaviors>
+										<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
+									</i:Interaction.Behaviors>
+									<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</ScrollViewer>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsGrouping" Value="False">
+									<Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</ListBox.Template>
 
-				<ListBox ItemsSource="{Binding CurrentProject.Timeline.Players}" SelectedItem="{Binding CurrentTrack, Mode=TwoWay}" x:Name="trackInfos" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" IsSynchronizedWithCurrentItem="True" Focusable="False">
-					
 					<ListBox.ItemTemplate>
 						<DataTemplate>
-							<Grid Name="trackPanel" Height="64">
-								<!--<WrapPanel x:Name="trackPanel" Height="64">
-								<Image Width="48" Height="48"/>
-								<Label Content="{Binding Name}"/>
-								<ToggleButton Content="M" Padding="0" Margin="1" Width="16" Height="16" IsTabStop="False" IsChecked="{Binding IsMute, Mode=TwoWay}"/>
-								<ToggleButton Content="S" Padding="0" Margin="1" Width="16" Height="16" IsTabStop="False" IsChecked="{Binding IsSolo, Mode=TwoWay}"/>
-								<Slider  Maximum="2" IsTabStop="False" TickFrequency="16" SmallChange="0.01" Value="{Binding Volume, Mode=TwoWay}" LargeChange="0.5"/>
-
-							</WrapPanel>-->
+							<Grid x:Name="trackPanel" MaxWidth="216" Height="64">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="64"/>
 									<ColumnDefinition/>
@@ -68,17 +90,43 @@
 							</DataTemplate.Triggers>
 						</DataTemplate>
 					</ListBox.ItemTemplate>
-					<i:Interaction.Behaviors>
-						<root:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
-					</i:Interaction.Behaviors>
+
 				</ListBox>
 			</DockPanel>
 			<GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
-			<ScrollViewer Grid.Column="2" x:Name="regions" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto">
-				<i:Interaction.Behaviors>
-					<root:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
-				</i:Interaction.Behaviors>
-			</ScrollViewer>
+			<DockPanel Grid.Column="2">
+				<ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+					<Canvas Width="1000"  Height="{Binding ElementName=toolbar,Path=Height}" Background="Black"/>
+					<i:Interaction.Behaviors>
+						<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group2" Orientation="Horizontal" />
+					</i:Interaction.Behaviors>
+				</ScrollViewer>
+				<ScrollViewer  x:Name="regions" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+					<i:Interaction.Behaviors>
+						<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
+						<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group2" Orientation="Horizontal" />
+					</i:Interaction.Behaviors>
+
+					<ItemsControl Width="1000" ItemsSource="{Binding CurrentProject.Timeline.Players}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<ItemsControl ItemsSource="{Binding Regions}" Height="64" HorizontalContentAlignment="Left">
+									<ItemsControl.ItemsPanel>
+										<ItemsPanelTemplate>
+											<Canvas/>
+										</ItemsPanelTemplate>
+									</ItemsControl.ItemsPanel>
+									<ItemsControl.ItemTemplate>
+										<ItemContainerTemplate>
+											<Button Height="64"/>
+										</ItemContainerTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</ScrollViewer>
+			</DockPanel>
 		</Grid>
 	</DockPanel>
 </UserControl>

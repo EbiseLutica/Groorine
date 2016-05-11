@@ -29,6 +29,11 @@ namespace Groorine
 			pt.AudioEffectors.Add(new TestAudioEffect());
 			pt.Name = "TestInstrument";
 			pt.IsMidiTrack = true;
+			pt.Regions.Add(new MidiRegion
+			{
+				Name = "AAA",
+				Length = 334
+			});
 			project.Timeline.Players.Add(pt);
 			CurrentTrack = pt;
 

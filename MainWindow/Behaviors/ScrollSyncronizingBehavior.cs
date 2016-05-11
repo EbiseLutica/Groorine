@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interactivity;
 
-namespace Groorine
+namespace Groorine.Behaviors
 {
 	public class ScrollSyncronizingBehavior : Behavior<Control>
 	{
