@@ -13,7 +13,7 @@
 	<Window.DataContext>
 		<local:GroorineViewModel/>
 	</Window.DataContext>
-	
+
 
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
@@ -58,6 +58,10 @@
 			<StatusBarItem BorderThickness="0" Content="準備完了"/>
 		</StatusBar>
 		<ToolBar DockPanel.Dock="Top">
+			<ToolBar.Resources>
+				<local:PlayMonitorConverter x:Key="PlayMonitor"/>
+				<BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+			</ToolBar.Resources>
 			<Button>
 				<Image Source="Resources/VSO_NewFile_16x.png" Stretch="None" ToolTip="新しいプロジェクトを作成します．"/>
 			</Button>
@@ -75,32 +79,36 @@
 				<Image Source="Resources/Redo_16x.png" Stretch="None" ToolTip="操作をやり直します．"/>
 			</Button>
 			<Separator/>
-			<Button>
+			<Button Command="{Binding GoToFirst}">
 				<Image Source="Resources/GoToLast.png" Stretch="None" ToolTip="タイムラインのはじめに移動します．"/>
 			</Button>
-			<Button>
+			<Button Command="{Binding Rewind}">
 				<Image Source="Resources/Rewind.png" Stretch="None" ToolTip="前の小節に移動します．"/>
 			</Button>
-			<Button>
+			<Button Command="{Binding Previous}">
 				<Image Source="Resources/previous.png" Stretch="None" ToolTip="小節内のはじめに移動します．"/>
 			</Button>
-			<Button>
-				<Image Source="Resources/arrow_run_16xLG.png" Stretch="None" ToolTip="再生を開始します．" />
+			<Button Command="{Binding Play}" Visibility="{Binding Path=IsNotPlaying, Converter={StaticResource BooleanToVisibility}}">
+				<Image Source="Resources/arrow_run_16xLG.png" Stretch="None" ToolTip="演奏を開始します。"/>
+			</Button>
+			<Button Command="{Binding Stop}" Visibility="{Binding Path=IsPlaying, Converter={StaticResource BooleanToVisibility}}">
+				<Image Source="Resources/Stop_16x.png" Stretch="None" ToolTip="演奏を停止します。" />
 			</Button>
 			<Button>
 				<Image Source="Resources/RecordDot_16xLG.png" Stretch="None" ToolTip="レコーディングを開始します．" />
 			</Button>
-			<Button>
+			<Button Command="{Binding Next}">
 				<Image Source="Resources/next.png" Stretch="None" ToolTip="次の小節に移動します．" />
 			</Button>
-			<Button>
+			<Button Command="{Binding GoToLast}">
 				<Image Source="Resources/GoToFirst.png" Stretch="None" ToolTip="タイムラインのおわりに移動します．" />
 			</Button>
 			<Separator/>
-			<Button>
-				<Image Source="Resources/GoToFirst.png" Stretch="None" ToolTip="タイムラインのおわりに移動します．" />
-			</Button>
-
+			<Label Background="#FFF08500"  Cursor="None" FontFamily="Consolas" Foreground="#FF3C1B00">
+				<Label.Content>
+					<Binding Converter="{StaticResource PlayMonitor}" Path="CurrentProject.Timeline.MusicTime"/>
+				</Label.Content>
+			</Label>
 		</ToolBar>
 		<Grid DockPanel.Dock="Top">
 			<Grid.ColumnDefinitions>
@@ -255,9 +263,10 @@
 				<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" ResizeDirection="Rows"/>
 				<controls:MetroAnimatedSingleRowTabControl Grid.Row="2" TabStripPlacement="Bottom" controls:TabControlHelper.IsUnderlined="True">
 					<TabItem Header="Piano" controls:ControlsHelper.HeaderFontSize="18">
-						
+						<Views:Pianoroll Height="214"/>
 					</TabItem>
 					<TabItem Header="Mixer" controls:ControlsHelper.HeaderFontSize="18"/>
+					
 				</controls:MetroAnimatedSingleRowTabControl>
 				<Views:Timeline/>
 			</Grid>

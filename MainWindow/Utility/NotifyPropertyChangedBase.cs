@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Groorine.Models
+namespace Groorine.Utility
 {
-	public class ModelBase : INotifyPropertyChanged
+	public class NotifyPropertyChangedBase : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 

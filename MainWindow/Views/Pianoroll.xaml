@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Groorine.Views.Pianoroll"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Groorine.Views"
+			 xmlns:behaviors="clr-namespace:Groorine.Behaviors"
+			 Name="this"
+			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="128"/>
+			<ColumnDefinition Width="1"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="16"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+		<ScrollViewer  Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Disabled">
+			<ItemsControl Name="Piano" VerticalAlignment="Top" Margin="{Binding ElementName=this, Path=TopMargin}" ItemsSource="{Binding ElementName=this, Path=Octaves}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<local:PianorollOctave Height="{Binding ElementName=this, Path=OctaveHeight}" Octave="{Binding}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+			<i:Interaction.Behaviors>
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
+			</i:Interaction.Behaviors>
+		</ScrollViewer>
+		<ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Disabled">
+			<Canvas Name="Measure"/>
+			<i:Interaction.Behaviors>
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group2" Orientation="Horizontal" />
+			</i:Interaction.Behaviors>
+		</ScrollViewer>
+		<ScrollViewer Grid.Column="2" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+			<ItemsControl Name="Notes" Height="{Binding ElementName=Piano, Path=ActualHeight}" ItemsSource="{Binding CurrentTrack}">
+				
+			</ItemsControl>
+			<i:Interaction.Behaviors>
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group1" Orientation="Vertical" />
+
+				<behaviors:ScrollSyncronizingBehavior ScrollGroup="Group2" Orientation="Horizontal" />
+			</i:Interaction.Behaviors>
+		</ScrollViewer>
+
+	</Grid>
+</UserControl>

@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using Groorine.Utility;
 
 namespace Groorine.Models
 {
-	public abstract class Region : ModelBase
+	public abstract class Region : NotifyPropertyChangedBase
 	{
 		private int tick;
 		private int length;
+		private int actualLength;
 		private bool loop;
 		private string name;
 
@@ -40,6 +42,17 @@ namespace Groorine.Models
 				NotifyPropertyChanged(nameof(Length));
 			}
 		}
+
+		public int ActualLength
+		{
+			get { return actualLength; }
+			set
+			{
+				actualLength = value;
+				NotifyPropertyChanged(nameof(ActualLength));
+			}
+		}
+
 		public bool Loop
 		{
 			get
@@ -75,6 +88,15 @@ namespace Groorine.Models
 		{
 			BindingOperations.EnableCollectionSynchronization(EventList, new object());
 		}
+		/// <summary>
+		/// このリージョンの特定の範囲にあるイベントを取得します。
+		/// </summary>
+		/// <param name="starttick">取得範囲の始点のTick。タイムラインの絶対時間を指定してください。</param>
+		/// <param name="endtick">取得範囲の終点のTick。タイムラインの絶対時間を指定してください。</param>
+		/// <returns></returns>
+		public IEnumerable<BasePlayerEvent> GetEventRange(int starttick, int endtick) => from bpe in EventList
+																						 where starttick - Tick <= bpe.Tick && bpe.Tick <= endtick - Tick
+																						 select bpe;
 
 	}
 

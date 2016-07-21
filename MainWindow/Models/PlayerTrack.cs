@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Groorine.Utility;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,13 +9,28 @@ using System.Windows.Data;
 
 namespace Groorine.Models
 {
-	public class PlayerTrack : ModelBase
+	public class PlayerTrack : NotifyPropertyChangedBase
 	{
 		public IInstrument Instrument { get; set; }
 		public ObservableCollection<IMidiEffector> MidiEffectors { get; } = new ObservableCollection<IMidiEffector>();
 		public ObservableCollection<IAudioEffector> AudioEffectors { get; } = new ObservableCollection<IAudioEffector>();
 		public bool IsMidiTrack { get; set; }
 		public ObservableCollection<Region> Regions { get; } = new ObservableCollection<Region>();
+
+		private Region selectedRegion;
+
+		public Region SelectedRegion
+		{
+			get
+			{
+				return selectedRegion;
+			}
+			set
+			{
+				selectedRegion = value;
+				NotifyPropertyChanged(nameof(SelectedRegion));
+			}
+		}
 
 		public int Panpot
 		{
@@ -77,6 +93,8 @@ namespace Groorine.Models
 			}
 		}
 
+		public Region CurrentRegion(int tick) => Regions.First((r) => r.Tick <= tick && tick < r.Tick + r.Length);
+
 		public double MaxOutput { get; private set; }
 		public double Output { get; set; }
 
@@ -94,6 +112,7 @@ namespace Groorine.Models
 		}
 
 		public PlayerTrack(PlayerTrack t)
+			:this()
 		{
 			Panpot = t.Panpot;
 			IsMute = t.IsMute;

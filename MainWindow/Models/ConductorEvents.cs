@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Groorine.Utility;
+using System;
 
 namespace Groorine.Models
 {
 	/// <summary>
 	/// すべての Groorine MIDIイベントの基底クラスです．
 	/// </summary>
-	public abstract class BaseEvent : ModelBase
+	public abstract class BaseEvent : NotifyPropertyChangedBase
 	{
 		private int tick;
 
@@ -39,7 +40,7 @@ namespace Groorine.Models
 	/// </summary>
 	public class TempoEvent : BaseConductorEvent
 	{
-		private double tempo;
+		private double tempo = 120;
 
 		/// <summary>
 		/// テンポです．
@@ -63,12 +64,12 @@ namespace Groorine.Models
 	/// </summary>
 	public class BeatEvent : BaseConductorEvent
 	{
-		private int numerator;
+		private int numerator = 4;
 		/// <summary>
 		/// 分子です．
 		/// </summary>
 		/// <exception cref="ArgumentOutOfRangeException"/>
-		public int Numerator
+		public int Rhythm
 		{
 			get
 			{
@@ -82,12 +83,22 @@ namespace Groorine.Models
 				NotifyPropertyChanged(nameof(numerator));
 			}
 		}
-		private int denominator;
+		private int denominator = 4;
+
+		public BeatEvent(int numerator, int denominator)
+		{
+			this.Rhythm = numerator;
+			this.Note = denominator;
+		}
+
+		public BeatEvent()
+			: this(4, 4) { }
+
 		/// <summary>
 		/// 分母です．
 		/// </summary>
 		/// <exception cref="ArgumentOutOfRangeException"/>
-		public int Denominator
+		public int Note
 		{
 			get
 			{

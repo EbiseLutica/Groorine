@@ -11,6 +11,56 @@
              xmlns:ctrls="clr-namespace:Groorine.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Style BasedOn="{StaticResource MetroListBoxItem}" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="BorderThickness" Value="0,0,0,1"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource GrayBrush8}"/>
+			<Setter Property="Background" Value="{DynamicResource GrayBrush10}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+							<ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+								<Setter TargetName="Border" Property="Background" Value="{DynamicResource GrayBrush2}" />
+							</Trigger>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="{DynamicResource GrayBrush10}" />
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="{DynamicResource GrayBrush7}" />
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsEnabled" Value="False" />
+									<Condition Property="IsSelected" Value="True" />
+								</MultiTrigger.Conditions>
+								<Setter Property="Foreground" Value="{DynamicResource AccentSelectedColorBrush}" />
+								<Setter TargetName="Border" Property="Background" Value="{DynamicResource GrayBrush7}" />
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="True" />
+									<Condition Property="Selector.IsSelectionActive" Value="True" />
+								</MultiTrigger.Conditions>
+								<Setter TargetName="Border" Property="Background" Value="{DynamicResource GrayBrush8}" />
+							</MultiTrigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
 	<DockPanel>
 		<ScrollBar DockPanel.Dock="Right" Width="16" Orientation="Vertical" 
 				   Maximum="{Binding ElementName=regions, Path=ScrollableHeight}"
@@ -43,7 +93,7 @@
 						<Image Source="/Groorine;component/Resources/CopyToClipboard_16x.png" Stretch="None"/>
 					</Button>
 				</ToolBar>
-				<ListBox VirtualizingPanel.ScrollUnit="Pixel" ItemsSource="{Binding CurrentProject.Timeline.Players}" SelectedItem="{Binding CurrentTrack, Mode=TwoWay}" x:Name="trackInfos" IsSynchronizedWithCurrentItem="True" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" VerticalAlignment="Top" ScrollViewer.CanContentScroll="True">
+				<ListBox AlternationCount="2" VirtualizingPanel.ScrollUnit="Pixel" ItemsSource="{Binding CurrentProject.Timeline.Players}" SelectedItem="{Binding CurrentTrack, Mode=TwoWay}" x:Name="trackInfos" IsSynchronizedWithCurrentItem="True" Focusable="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" VerticalAlignment="Top" ScrollViewer.CanContentScroll="True">
 					<ListBox.Template>
 						<ControlTemplate TargetType="{x:Type ListBox}">
 							<Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
@@ -83,11 +133,7 @@
 								<Slider Grid.Row="1" Grid.Column="1" Maximum="2" IsTabStop="False" TickFrequency="16" SmallChange="0.01" Value="{Binding Volume, Mode=TwoWay}" LargeChange="0.5"/>
 								<ctrls:Dial Value="{Binding Panpot, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
 							</Grid>
-							<DataTemplate.Triggers>
-								<Trigger Property="ItemsControl.AlternationIndex" Value="1">
-									<Setter Property="Background" Value="{StaticResource GrayBrush8}" TargetName="trackPanel"/>
-								</Trigger>
-							</DataTemplate.Triggers>
+							
 						</DataTemplate>
 					</ListBox.ItemTemplate>
 
@@ -110,7 +156,7 @@
 					<ItemsControl Width="1000" ItemsSource="{Binding CurrentProject.Timeline.Players}">
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
-								<ItemsControl ItemsSource="{Binding Regions}" Height="64" HorizontalContentAlignment="Left">
+								<ItemsControl ItemsSource="{Binding Regions}" Height="64" HorizontalContentAlignment="Left" BorderThickness="0,0.5" BorderBrush="Gray">
 									<ItemsControl.ItemsPanel>
 										<ItemsPanelTemplate>
 											<Canvas/>

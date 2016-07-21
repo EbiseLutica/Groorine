@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Groorine.Views.PianorollOctave"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Groorine.Views"
+             mc:Ignorable="d" 
+			 Name="body"
+             d:DesignHeight="144" d:DesignWidth="96">
+	<Grid UseLayoutRounding="True">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Border Grid.Row="0" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="1" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="2" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="3" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="4" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="5" Background="White" BorderBrush="Gray" BorderThickness="0,0,0,1"/>
+		<Border Grid.Row="6" Background="White" BorderBrush="Black" BorderThickness="0,0,0,1"/>
+		<Grid Grid.RowSpan="7">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Rectangle Grid.Row="1" Fill="Black"/>
+			<Rectangle Grid.Row="3" Fill="Black"/>
+			<Rectangle Grid.Row="5" Fill="Black"/>
+			<Rectangle Grid.Row="8" Fill="Black"/>
+			<Rectangle Grid.Row="10" Fill="Black"/>
+			<TextBlock Grid.Row="10" Grid.RowSpan="2" Grid.Column="1"  TextAlignment="Right" Text="{Binding Octave, ElementName=body, StringFormat={}C{0}}" Foreground="Black" />
+			
+		</Grid>
+	</Grid>
+</UserControl>
